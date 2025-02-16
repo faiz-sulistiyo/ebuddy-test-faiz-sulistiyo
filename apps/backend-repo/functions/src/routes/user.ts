@@ -1,6 +1,11 @@
 import express from "express";
-import { createUser, deleteUser, getUsers, updateUser } from "../controllers/user";
-import { authMiddleware } from "../middleware/authMiddleware";
+import {
+  createUser,
+  deleteUser,
+  getUsers,
+  updateUser,
+} from "../controllers/user";
+import {authMiddleware} from "../middleware/authMiddleware";
 
 const userRoutes = express.Router();
 

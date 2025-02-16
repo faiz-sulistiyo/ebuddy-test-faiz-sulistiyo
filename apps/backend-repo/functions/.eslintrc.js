@@ -20,14 +20,15 @@ module.exports = {
   ignorePatterns: [
     "/lib/**/*", // Ignore built files.
     "/generated/**/*", // Ignore generated files.
+    "/.eslintrc.js",
   ],
-  plugins: [
-    "@typescript-eslint",
-    "import",
-  ],
+  plugins: ["@typescript-eslint", "import"],
   rules: {
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
+    "valid-jsdoc": "off", // Disables JSDoc enforcement
+    "@typescript-eslint/no-explicit-any": "warn", // Warns but doesn't error for `any`
+    "new-cap": ["error", {capIsNew: false}], // Prevents errors for function names
   },
 };
