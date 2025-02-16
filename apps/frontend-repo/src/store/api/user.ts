@@ -3,7 +3,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getCookie } from "cookies-next";
 import { User } from "@ebuddy/types";
 import { showToast } from "@/store/toastSlice"; // Import toast action from Redux
-import { Dispatch } from "@reduxjs/toolkit";
 import { setPagination } from "../userSlice";
 
 export const userApiSlice = createApi({
@@ -27,8 +26,8 @@ export const userApiSlice = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           dispatch(setPagination((await queryFulfilled).data.meta?.pagination))
-        } catch (error) {
-
+        } catch {
+          dispatch(showToast({ message: "Failed to fetch users", severity: "error", duration: 2000 }));
         }
       }
     }),
@@ -43,7 +42,7 @@ export const userApiSlice = createApi({
         try {
           await queryFulfilled;
           dispatch(showToast({ message: "User updated successfully", severity: "success", duration: 2000 }));
-        } catch (error) {
+        } catch {
           dispatch(showToast({ message: "Failed to update user", severity: "error", duration: 2000 }));
         }
       },
@@ -59,7 +58,7 @@ export const userApiSlice = createApi({
         try {
           await queryFulfilled;
           dispatch(showToast({ message: "User created successfully", severity: "success", duration: 2000 }));
-        } catch (error) {
+        } catch {
           dispatch(showToast({ message: "Failed to create user", severity: "error", duration: 2000 }));
         }
       },
@@ -74,7 +73,7 @@ export const userApiSlice = createApi({
         try {
           await queryFulfilled;
           dispatch(showToast({ message: "User deleted successfully", severity: "success", duration: 2000 }));
-        } catch (error) {
+        } catch {
           dispatch(showToast({ message: "Failed to delete user", severity: "error", duration: 2000 }));
         }
       },

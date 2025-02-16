@@ -29,7 +29,7 @@ export const authApiSlice = createApi({
         try {
           await queryFulfilled;
           dispatch(showToast({ message: "Successfully logged in", severity: "success", duration: 500 }));
-        } catch (error) {
+        } catch{
           dispatch(showToast({ message: "Failed logging in", severity: "error", duration: 500 }));
         }
       },
@@ -54,7 +54,7 @@ export const authApiSlice = createApi({
         try {
           await queryFulfilled;
           dispatch(showToast({ message: "Successfully registered user", severity: "success", duration: 500 }));
-        } catch (error) {
+        } catch {
           dispatch(showToast({ message: "Failed registering user", severity: "error", duration: 500 }));
         }
       },

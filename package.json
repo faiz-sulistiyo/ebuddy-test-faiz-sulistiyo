@@ -17,7 +17,8 @@
   },
   "packageManager": "yarn@1.22.22",
   "workspaces": [
-    "apps/*",
+    "apps/frontend-repo",
+    "apps/backend-repo/functions",
     "packages/*"
   ]
 }
